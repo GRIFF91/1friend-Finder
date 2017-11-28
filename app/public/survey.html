@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Page</title>
+
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Survey Page</h1>
+      <hr>
+      <h2 class="text-center">Take the Survey</h2>
+      <br>
+
+      <div class="text-center">
+        <a href="/"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> Home Page</button></a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <!-- Survey Page -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">5 = Max | 1 = Minimum.</h4>
+          </div>
+          <div class="panel-body">
+
+          <!-- survey -->
+            <form role="form">
+              <h1>Name(Required)</h1>
+                <input type="text" class="form-control" id="nameInput" placeholder="Name">
+              <h1>Photo or Image(Required)</h1>
+                <input type="text" class="form-control" id="photoInput" placeholder="Put link to Photo or Image here">
+                <hr>
+
+              <h2>Question 1</h2>
+                <h4>Do you enjoy the outdoors?</h4>
+                  <select class="form-control" id="Q1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+
+              <h2>Question 2</h2>
+                <h4>Do you like cooking?</h4>
+                  <select class="form-control" id="Q2">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+
+              <h2>Question 3</h2>
+                <h4>How outgoing are you?</h4>
+                  <select class="form-control" id="Q3">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+
+              <h2>Question 4</h2>
+                <h4>Do you enjoy going out(bars, cafes, etc...)?</h4>
+                  <select class="form-control" id="Q4">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+
+              <h2>Question 5</h2>
+                <h4>Do you like going to see movies?</h4>
+                  <select class="form-control" id="Q5">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+
+              <h2>Question 6</h2>
+                <h4>How likely are you to do something just out of sheer curiosity?</h4>
+                  <select class="form-control" id="Q6">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+
+              <h2>Question 7</h2>
+                <h4>Are you a very organized person?</h4>
+                  <select class="form-control" id="Q7">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+
+              <h2>Question 8</h2>
+                <h4>Would you prefer an interesting book or a video game over a social event?</h4>
+                  <select class="form-control" id="Q8">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+
+              <h2>Question 9</h2>
+                <h4>Are you more of a natural improviser than a careful planner?</h4>
+                  <select class="form-control" id="Q9">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+
+              <h2>Question 10</h2>
+                <h4>Do you enjoy sports?</h4>
+                  <select class="form-control" id="Q10">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+              <br>
+
+              <button type="submit" class="btn btn-primary submit" id="submitButton">Submit</button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <footer class="footer">
+      <div class="container">
+        <p><a href="/api/friends">Friends API list</a> | <a href="https://github.com/afhaque/HotRestaurant">GitHub Repo</a></p>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
+
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+<script type="text/javascript">
+
+    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+    // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+    // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+    // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+
+    $("#submitButton").on("click", function(event) {
+      event.preventDefault();
+
+      // Here we grab the form elements
+      var userInput = {
+        name: $("#nameInput").val().trim(),
+        photo: $("#photoInput").val().trim(),
+        scores: [  
+                  $("#Q1").val().trim(),
+                  $("#Q2").val().trim(),
+                  $("#Q3").val().trim(),
+                  $("#Q4").val().trim(),
+                  $("#Q5").val().trim(),
+                  $("#Q6").val().trim(),
+                  $("#Q7").val().trim(),
+                  $("#Q8").val().trim(),
+                  $("#Q9").val().trim(),
+                  $("#Q10").val().trim()
+          ]    
+      };
+
+      // console.log(newUser);
+
+      // This line is the magic. It"s very similar to the standard ajax function we used.
+      // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+      // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+      // depending on if a tables is available or not.
+
+      $.post("/api/friends", userInput,
+        function(data) {
+
+          // If a table is available... tell user they are booked.
+          if (data) {
+            alert("Yay! You are officially added!");
+          }
+
+          // If a table is available... tell user they on the waiting list.
+          else {
+            alert("Sorry you are on the wait list");
+          }
+
+          // Clear the form when submitting
+          $("#nameInput").val("");
+          $("#photoInput").val("");
+          $("#Q1").val("");
+          $("#Q2").val("");
+          $("#Q3").val("");
+          $("#Q4").val("");
+          $("#Q5").val("");
+          $("#Q6").val("");
+          $("#Q7").val("");
+          $("#Q8").val("");
+          $("#Q9").val("");
+          $("#Q10").val("");
+
+        });
+
+    });
+
+</script>
