@@ -33,13 +33,7 @@ module.exports = function(app) {
     // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
     // It will do this by sending out the value "true" have a table
     // req.body is available since we're using the body-parser middleware
-    var userInput = req.body;
-		// console.log('userInput = ' + JSON.stringify(userInput));
-
-	var userResponses = userInput.scores;
-	// console.log('userResponses = ' + userResponses);
-    
-    userData.push(userInput);
+    userData.push(req.body);
   });
 
   // ---------------------------------------------------------------------------
